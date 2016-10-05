@@ -1,0 +1,6 @@
+{
+  "directory": "app/bower_components",
+  "proxy": "http://guest2:vivere*123@proxy.viverebrasil:3128",
+  "https-proxy": "http://guest2:vivere*123@proxy.viverebrasil:3128",
+  "strict-ssl": false
+}

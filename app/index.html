@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <ul class="menu">
+    <li><a ui-sref="grader-feature.component">View de component</a></li>
+    <li><a ui-sref="grader-feature.controller">View de controller</a></li>
+  </ul>
+
+  <ui-view></ui-view>
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="app.js"></script>
+  <script src="grader-feature/grader.module.js"></script>
+  <script src="grader-feature/providers/grader-provider.provider.js"></script>
+  <script src="grader-feature/services/grader-factory.factory.js"></script>
+  <script src="grader-feature/services/grader-service.service.js"></script>
+  <script src="grader-feature/components/grader-component/grader-component.component.js"></script>
+  <script src="grader-feature/components/grader-page/grader-page.controller.js"></script>
+  <script src="grader-feature/filters/grader-filter.filter.js"></script>
+  <script src="grader-feature/constants/grader-constant.constant.js"></script>
+  <script src="grader-feature/directives/grader-directive.js"></script>
+</body>
+</html>

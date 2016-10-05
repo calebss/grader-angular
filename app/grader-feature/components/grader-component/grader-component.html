@@ -1,0 +1,49 @@
+<h1>
+  Grader
+</h1>
+<h2>Add Agent</h2>
+<label>Name</label>
+<input type="text" ng-model="agentName">
+</br>
+<label>Disponibilidade</label>
+<input type="text" ng-model="agentAvailability"> vezes
+</br>
+<label>Imagem</label>
+url: <input type="text" ng-model="agentImage"> 
+<button ng-click="$ctrl.addAgent(agentName, agentAvailability, agentImage)">Adicionar Agent</button>
+ 
+ </br>
+<select>
+  <option ng-repeat="agent in $ctrl.agents track by agent.id" value="{{agent.name}}">{{agent.name}}</option>
+  
+</select>
+
+
+
+<h2>Add Schedule</h2>
+<label>Nome</label>
+<input type="text" ng-model="newSchedule">
+</br>
+<button ng-click="$ctrl.addSchedule(newSchedule)">Add Schedule</button>
+</br>
+</br>
+</br>
+</br>
+
+<div>
+	<div ng-repeat="item in $ctrl.schedules track by item.name">
+		<span>{{item.name}}</span>
+		<ul >
+			<li ng-repeat="activity in item.activities track by activity">{{activity}}</li>
+		</ul>
+		<input type="text" ng-model="newActivity">
+		<button ng-click="$ctrl.addActivity(item, newActivity)">add Activity</button>
+	</div>		
+</div>
+
+</br>
+<div>
+  {{$ctrl.test|graderFilter}}
+</div>
+<label>Edita aí</label>
+<input type="text" ng-model="$ctrl.editableText">
