@@ -9,6 +9,8 @@ function GraderComponentController(graderService, graderConstant) {
 
 	this.agents = [];
 
+	this.gradeAgents = [];
+
   this.schedules = [{'name': 'Quinta-Feira 1', 'activities': ['Maternal', 'Juniores', 'Pré-Adolescente', 'Adolescente']}, {'name': 'Quinta-Feira 2', 'activities': ['Maternal', 'Juniores', 'Pré-Adolescente', 'Adolescente']}];
 
   this.addSchedule = function(item) {
@@ -35,6 +37,30 @@ function GraderComponentController(graderService, graderConstant) {
 
   	that.agents.push(newAgent);
   	console.log(that.agents);
+  }
+
+  this.linkGradeAgent = function(agent){
+		//console.log(that.agents, agent);
+		for(var a = 0; a < that.agents.length; a++){
+			if(that.agents[a].id == agent){
+				for(var b = 0; b < that.agents[a].availability; b++)
+				{
+					var newGradeAgent = {
+			  		"id": that.gradeAgents.length,
+			  		"agent": {
+			  			"id": agent,
+			  			"name": that.agents[a].name
+			  		}
+		  		}
+			  	
+			  	that.gradeAgents.push(newGradeAgent);
+				}
+			}
+		}
+
+  	console.log(that.gradeAgents)
+
+
   }
 }
 

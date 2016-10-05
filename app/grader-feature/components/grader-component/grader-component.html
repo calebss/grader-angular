@@ -13,10 +13,7 @@ url: <input type="text" ng-model="agentImage">
 <button ng-click="$ctrl.addAgent(agentName, agentAvailability, agentImage)">Adicionar Agent</button>
  
  </br>
-<select>
-  <option ng-repeat="agent in $ctrl.agents track by agent.id" value="{{agent.name}}">{{agent.name}}</option>
-  
-</select>
+
 
 
 
@@ -42,8 +39,35 @@ url: <input type="text" ng-model="agentImage">
 </div>
 
 </br>
-<div>
-  {{$ctrl.test|graderFilter}}
-</div>
-<label>Edita aí</label>
-<input type="text" ng-model="$ctrl.editableText">
+<h2>Vincular Agent a Grade</h2>
+<select name="gradeAgentSelect" id="gradeAgentSelect" ng-model="gradeAgent">
+  <option ng-repeat="agent in $ctrl.agents track by agent.id" value="{{agent.id}}">{{agent.name}}</option>
+  
+</select>
+
+<button ng-click="$ctrl.linkGradeAgent(gradeAgent)">Vincular Agent</button>
+
+</br>
+
+<table>
+<thead>
+  <tr>
+	  <th>
+	  </th>
+     <th ng-repeat="gradeAgent in $ctrl.gradeAgents track by gradeAgent.id">
+     	{{gradeAgent.agent.name}}
+     </th>
+  </tr>
+ </thead>
+<body>
+	<tr ng-repeat="aula in $ctrl.schedules track by aula.name">
+		<th>
+		{{aula.name}}
+	  </th>
+		<th ng-repeat="gradeAgent in $ctrl.gradeAgents track by gradeAgent.id">
+			<input>
+		</th>
+	</tr>
+</body>
+</table>
+
