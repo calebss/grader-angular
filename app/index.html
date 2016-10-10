@@ -7,13 +7,47 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
 </head>
 <body>
-  <ul class="menu">
-    <li><a ui-sref="grader-feature.component">View de component</a></li>
-    <li><a ui-sref="grader-feature.controller">View de controller</a></li>
-  </ul>
+  <div id="sideNavContainer" ng-controller="SideNavController as ctrl" layout="row" ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <md-button ng-click="openLeftMenu()" class="md-icon-button" aria-label="Settings" ng-disabled="false">
+          <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+        </md-button>
+        <span>Grader</span> <!-- fill up the space between left and right area -->
+        <span flex></span>
+        <md-button ng-click="openRightMenu()"> Right Bar Button </md-button>
+      </div>
+    </md-toolbar> 
 
+   
+     <md-sidenav md-component-id="left" class="md-sidenav-left">
+
+      <md-menu>
+        <md-menu-content width="4">
+          <md-menu-item>
+            <md-button ui-sref="grader-feature.component">
+              View de component
+            </md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ui-sref="grader-feature.controller">
+              View de controller
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+
+     </md-sidenav>
+  
+     <md-sidenav md-component-id="right" class="md-sidenav-right">
+        <md-button href="http://google.com">Google</md-button>
+     </md-sidenav>
+  </div>
+  
+ 
   <ui-view></ui-view>
 
   <!-- In production use:
@@ -21,12 +55,18 @@
   -->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/lodash/lodash.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="bower_components/angular-material/angular-material.js"></script>
+
   <script src="app.js"></script>
   <script src="grader-feature/grader.module.js"></script>
   <script src="grader-feature/providers/grader-provider.provider.js"></script>
   <script src="grader-feature/services/grader-factory.factory.js"></script>
   <script src="grader-feature/services/grader-service.service.js"></script>
   <script src="grader-feature/components/grader-component/grader-component.component.js"></script>
+   <script src="grader-feature/components/side-nav/side-nav.controller.js"></script>
   <script src="grader-feature/components/grader-page/grader-page.controller.js"></script>
   <script src="grader-feature/filters/grader-filter.filter.js"></script>
   <script src="grader-feature/constants/grader-constant.constant.js"></script>

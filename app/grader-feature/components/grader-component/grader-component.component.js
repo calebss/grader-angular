@@ -1,46 +1,62 @@
-function GraderComponentController(graderService, graderConstant) {
+function GraderComponentController(graderFactory, graderConstant) {
   console.log('Grader controller activated');
 	var that = this;
-
-  graderService.testService();
-  console.log(graderConstant);
-  this.test = 'Teste do filtro';
-  this.editableText = 'test binding';
-
-	this.agents = [];
-
-	this.gradeAgents = [];
-
+  this.agents = [];
+  this.gradeAgents = [];
   this.schedules = [{'name': 'Quinta-Feira 1', 'activities': ['Maternal', 'Juniores', 'Pré-Adolescente', 'Adolescente']}, {'name': 'Quinta-Feira 2', 'activities': ['Maternal', 'Juniores', 'Pré-Adolescente', 'Adolescente']}];
 
-  this.addSchedule = function(item) {
-		console.log(item);
-    that.schedules.push({
+  //Carregar agents
+  graderFactory.getAgent().then(
+    function (successResponse) {
+      console.log('success:');
+      console.log(successResponse);
+      that.agents = successResponse.data.agentes;
+      console.log(that.agents);
+    },
+    function (errorResponse) {
+      console.log('error:');
+      console.log(errorResponse);
+    }
+  );
 
+  this.addSchedule = function(item) {
+    that.schedules.push({
 	  	'name': item,
 	  	'activities': []
 	  });
   };
 
   this.addActivity = function(schedule, item){
-  	//console.log(schedule.activities, item)
   	schedule.activities.push(item);
   }
 
   this.addAgent = function(name, availability, image){
   	var newAgent = {
-  		"id": that.agents.length,
   		"name": name,
   		"availability": availability,
   		"image": image
   	}
 
-  	that.agents.push(newAgent);
-  	console.log(that.agents);
+    graderFactory.createAgent(newAgent).then(
+      function (successResponse) {
+        console.log('success:');
+        console.log(successResponse);
+        var id = successResponse.data.idAgent;
+        newAgent.id = id
+        that.agents.push(newAgent);
+        console.log(newAgent);
+      },
+      function (errorResponse) {
+        console.log('error:');
+        console.log(errorResponse);
+      }
+    )
+     .finally(function () {
+      console.log(that.agents);
+    })
   }
 
   this.linkGradeAgent = function(agent){
-		//console.log(that.agents, agent);
 		for(var a = 0; a < that.agents.length; a++){
 			if(that.agents[a].id == agent){
 				for(var b = 0; b < that.agents[a].availability; b++)
@@ -57,10 +73,12 @@ function GraderComponentController(graderService, graderConstant) {
 				}
 			}
 		}
+  }
 
-  	console.log(that.gradeAgents)
-
-
+  this.activitiesList = function(){
+    return reduce = _.reduce(_.map(this.schedules, 'activities'), function(flattened, other) {
+      return flattened.concat(other);
+    }, []);
   }
 }
 
@@ -70,5 +88,5 @@ angular.module('myApp.graderFeature')
     controller: GraderComponentController
   });
 
-GraderComponentController.$inject = ['graderService', 'graderConstant'];
+GraderComponentController.$inject = ['graderFactory', 'graderConstant'];
 

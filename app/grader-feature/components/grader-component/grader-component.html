@@ -1,16 +1,58 @@
-<h1>
-  Grader
-</h1>
-<h2>Add Agent</h2>
-<label>Name</label>
-<input type="text" ng-model="agentName">
-</br>
-<label>Disponibilidade</label>
-<input type="text" ng-model="agentAvailability"> vezes
-</br>
-<label>Imagem</label>
-url: <input type="text" ng-model="agentImage"> 
-<button ng-click="$ctrl.addAgent(agentName, agentAvailability, agentImage)">Adicionar Agent</button>
+
+<div class="header">
+ 	<md-subheader class="sub-header">
+      <h2>Lista de Professores</h2>
+       
+	</md-subheader>
+	<md-button class="bt-add md-fab" aria-label="Eat cake">
+	        <md-icon md-svg-src="img/material-design-icons-master/content/svg/design/ic_add_24px.svg"></md-icon>
+	    </md-button>
+</div>
+
+<md-card>
+
+	<md-subheader>
+		<h3>Adicionar Professor</h3>
+	</md-subheader>
+	
+    <md-card-content>
+    	<md-input-container style="width: 100%">
+	        <label>Nome</label>
+	        <input ng-model="agentName">
+	    </md-input-container>
+
+	    <md-input-container style="width: 100%">
+	        <label>Disponibilidade</label>
+	        <input ng-model="agentAvailability">
+	    </md-input-container>
+	    <md-input-container style="width: 100%">
+	        <label>Imagem</label>
+	        <input ng-model="agentImage">
+	    </md-input-container>
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+          <md-button ng-click="$ctrl.addAgent(agentName, agentAvailability, agentImage)">Adicionar</md-button>
+    </md-card-actions>
+
+	 
+</md-card>
+
+<md-content id="main" layout="horizontal" layout-align="center">
+    
+
+    <md-list style="width: 100%;">
+
+        <div >
+            <md-card ng-repeat="agent in $ctrl.agents track by agent.id" value="{{agent.id}}">
+                <md-item>
+                   <p>{{agent.name}}</p>
+                </md-item>
+            </md-card>
+        </div>
+    </md-list>
+</md-content>
+
+
  
  </br>
 
@@ -60,9 +102,9 @@ url: <input type="text" ng-model="agentImage">
   </tr>
  </thead>
 <body>
-	<tr ng-repeat="aula in $ctrl.schedules track by aula.name">
+	<tr ng-repeat="aula in $ctrl.activitiesList() track by $index"">
 		<th>
-		{{aula.name}}
+		{{aula}}
 	  </th>
 		<th ng-repeat="gradeAgent in $ctrl.gradeAgents track by gradeAgent.id">
 			<input>

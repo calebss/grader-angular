@@ -1,2 +1,2 @@
 angular.module('myApp.graderFeature')
-  .constant('graderConstant', 'grader constant');
+  .constant('graderConstant', 'http://localhost:8002');

@@ -23,3 +23,20 @@
   content: "|";
   padding-right: 0.3em;
 }
+
+.header{
+	position: relative;
+}
+
+.header .bt-add{
+	position: absolute;
+	top:93px;
+	right: 25px;
+}
+
+.sub-header{
+	background: url("img/bg/google-material-design-wallpaper-2.jpg");
+	height: 130px;
+    background-position: 50% 0px;
+    background-repeat: no-repeat;
+}

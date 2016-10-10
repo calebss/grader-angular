@@ -3,5 +3,8 @@
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
   'ui.router',
-  'myApp.graderFeature'
+  'myApp.graderFeature',
+  'ngMaterial',
+  'ngAnimate',
+  'ngAria'
 ]);
