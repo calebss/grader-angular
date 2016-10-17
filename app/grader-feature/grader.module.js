@@ -14,17 +14,15 @@ function GraderFeatureConfig($stateProvider) {
       abstract: true,
       template: '<ui-view>'
     })
+    .state({
+      name: 'grader-feature.agent',
+      url: '/agent',
+      component: 'agentComponent'
+    })
     // página usando componente
     .state({
       name: 'grader-feature.component',
       url: '/component',
       component: 'graderComponent'
-    })
-    // página usando controller + template
-    .state({
-      name: 'grader-feature.controller',
-      url: '/controller',
-      controller: 'GraderPageController as vm',
-      templateUrl: 'grader-feature/components/grader-page/grader-page.html'
     })
 }

@@ -4,7 +4,7 @@ function GraderComponentController(graderFactory, graderConstant) {
   this.agents = [];
   this.gradeAgents = [];
   this.schedules = [{'name': 'Quinta-Feira 1', 'activities': ['Maternal', 'Juniores', 'Pré-Adolescente', 'Adolescente']}, {'name': 'Quinta-Feira 2', 'activities': ['Maternal', 'Juniores', 'Pré-Adolescente', 'Adolescente']}];
-
+  
   //Carregar agents
   graderFactory.getAgent().then(
     function (successResponse) {

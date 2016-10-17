@@ -11,4 +11,4 @@ function SideNavController(graderFactory, $scope, $mdSidenav) {
    	};
 }
 
-GraderPageController.$inject = ['graderFactory'];
+GraderComponentController.$inject = ['graderFactory'];

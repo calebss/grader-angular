@@ -26,6 +26,7 @@
      <md-sidenav md-component-id="left" class="md-sidenav-left">
 
       <md-menu>
+        
         <md-menu-content width="4">
           <md-menu-item>
             <md-button ui-sref="grader-feature.component">
@@ -33,8 +34,8 @@
             </md-button>
           </md-menu-item>
           <md-menu-item>
-            <md-button ui-sref="grader-feature.controller">
-              View de controller
+            <md-button ui-sref="grader-feature.agent">
+              Lista de professor
             </md-button>
           </md-menu-item>
         </md-menu-content>
@@ -47,7 +48,7 @@
      </md-sidenav>
   </div>
   
- 
+
   <ui-view></ui-view>
 
   <!-- In production use:
@@ -67,9 +68,10 @@
   <script src="grader-feature/services/grader-service.service.js"></script>
   <script src="grader-feature/components/grader-component/grader-component.component.js"></script>
    <script src="grader-feature/components/side-nav/side-nav.controller.js"></script>
-  <script src="grader-feature/components/grader-page/grader-page.controller.js"></script>
+  <script src="grader-feature/components/agent-component/agent-component.component.js"></script>
   <script src="grader-feature/filters/grader-filter.filter.js"></script>
   <script src="grader-feature/constants/grader-constant.constant.js"></script>
   <script src="grader-feature/directives/grader-directive.js"></script>
+  
 </body>
 </html>
